@@ -1,0 +1,31 @@
+[ ca ]
+default_ca = myca
+
+[ myca ]
+dir = /etc/myca
+certs = $dir/certs
+private = $dir/private
+crl_dir = $dir/crl
+database = $dir/index.txt
+serial = $dir/serial
+RANDFILE = $dir/.rand
+new_certs_dir = $dir/newcerts
+certificate = $dir/cacert.pem
+private_key = $dir/private/cakey.pem
+default_days == 365
+default_crl_days = 30
+default_md = sha256
+policy = myca_policy
+x509_extensions = myca_extensions
+
+[ myca_policy ]
+commonName = supplied
+stateOrProvinceName = rizal
+countryName = philippines
+emailAddress = lykaandaya45@gmail.com
+
+[ myca_extension ]
+basicConstraints = critical, CA:true
+keyUsage = critical, keyCertSign, cRLSign
+
+
